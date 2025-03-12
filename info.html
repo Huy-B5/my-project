@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Sinh Viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Thông Tin Sinh Viên</h1>
+    </header>
+
+    <section class="info">
+        <img id="modalAvatar" src="default-avatar.jpg" alt="Avatar">
+        <p><strong>Họ và tên:</strong> Nguyễn Đình Huy</p>
+        <p><strong>Vai Trò</strong> Developer</p>
+        <p><strong>vị trí</strong>  lập trình viên backend chuyên về Python.</p>
+        <p><strong>MSV:</strong> 2180606153</p>
+        <p><strong>Ngành:</strong> Công nghệ Thông Tin</p>
+        <p><strong>Chuyên ngành:</strong> Công nghệ phần mềm</p>
+        <p><strong>Quê quán:</strong> Ninh Thuận</p>
+        <p><strong>Địa chỉ:</strong> 616 Lê Đức Thọ</p>
+        <button onclick="goBack()">Quay lại</button>
+    </section>
+
+    <script>
+        // Load ảnh đại diện từ localStorage
+        window.onload = function () {
+            const savedAvatar = localStorage.getItem("studentAvatar");
+            if (savedAvatar) {
+                document.getElementById("modalAvatar").src = savedAvatar;
+            }
+        };
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Sinh Viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Chào mừng đến với trang giới thiệu sinh viên</h1>
+    </header>
+
+    <section class="intro">
+        <p>Xin chào! Tôi là sinh viên ngành Công nghệ Thông tin.</p>
+    </section>
+
+    <section class="team">
+        <h2>Thông tin sinh viên</h2>
+        <div class="member-card">
+            <div class="avatar-container">
+                <img id="avatarPreview" src="default-avatar.jpg" alt="Avatar">
+            </div>
+            <input type="file" id="avatarUpload" accept="image/*">
+            <button id="uploadBtn">📤 Chọn ảnh</button>
+            <h3>Nguyễn Đình Huy</h3>
+            <p>Developer</p>
+            <p>MSV: 2180606153</p>
+            <button onclick="redirectToInfo()">📄 Xem thông tin</button>
+        </div>
+    </section>
+
+    <script>
+        // Tải ảnh đại diện từ localStorage nếu có
+        window.onload = function () {
+            const savedAvatar = localStorage.getItem("studentAvatar");
+            if (savedAvatar) {
+                document.getElementById("avatarPreview").src = savedAvatar;
+            }
+        };
+
+        // Sự kiện khi nhấn nút Upload ảnh
+        document.getElementById("uploadBtn").addEventListener("click", function () {
+            document.getElementById("avatarUpload").click();
+        });
+
+        // Xử lý upload ảnh
+        document.getElementById("avatarUpload").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById("avatarPreview").src = e.target.result;
+                    localStorage.setItem("studentAvatar", e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Chuyển sang trang info.html
+        function redirectToInfo() {
+            window.location.href = "info.html";
+        }
+    </script>
+</body>
+</html>
